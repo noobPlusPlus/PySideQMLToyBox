@@ -8,26 +8,30 @@
         if(jsonObject.msg !== "成功")
             return;
 
-        infoRepeaterModel.get(0).total = jsonObject.data.chinaTotal.total.input;
-        infoRepeaterModel.get(0).increase = jsonObject.data.chinaTotal.today.input;
+        let totalObject = jsonObject.data.chinaTotal.total
+        let todayObject = jsonObject.data.chinaTotal.today
+        let extDataObject = jsonObject.data.chinaTotal.extData
 
-        infoRepeaterModel.get(1).total = jsonObject.data.chinaTotal.extData.noSymptom;
-        infoRepeaterModel.get(1).increase = jsonObject.data.chinaTotal.extData.incrNoSymptom;
+        infoRepeaterModel.get(0).total = totalObject.input;
+        infoRepeaterModel.get(0).increase = todayObject.input;
 
-        let totalConfirm = jsonObject.data.chinaTotal.total.confirm;
+        infoRepeaterModel.get(1).total = extDataObject.noSymptom;
+        infoRepeaterModel.get(1).increase = extDataObject.incrNoSymptom;
+
+        let totalConfirm = totalObject.confirm;
         infoRepeaterModel.get(3).total = totalConfirm;
-        infoRepeaterModel.get(3).increase = jsonObject.data.chinaTotal.today.confirm;
+        infoRepeaterModel.get(3).increase = todayObject.confirm;
 
-        let totalDead = jsonObject.data.chinaTotal.total.dead;
+        let totalDead = totalObject.dead;
         infoRepeaterModel.get(4).total = totalDead;
-        infoRepeaterModel.get(4).increase = jsonObject.data.chinaTotal.today.dead;
+        infoRepeaterModel.get(4).increase = todayObject.dead;
 
-        let totalHeal = jsonObject.data.chinaTotal.total.heal;
+        let totalHeal = totalObject.heal;
         infoRepeaterModel.get(5).total = totalHeal;
-        infoRepeaterModel.get(5).increase = jsonObject.data.chinaTotal.today.heal;
+        infoRepeaterModel.get(5).increase = todayObject.heal;
 
         infoRepeaterModel.get(2).total = totalConfirm - totalDead - totalHeal;
-        infoRepeaterModel.get(2).increase = jsonObject.data.chinaTotal.today.storeConfirm;
+        infoRepeaterModel.get(2).increase = todayObject.storeConfirm;
     }
     xhr.open("GET", "http://c.m.163.com/ug/api/wuhan/app/data/list-total");
     xhr.send();
