@@ -3,6 +3,10 @@
 #### 介绍
 c++/QWidget菜鸟学习PySide/QML写的小玩具。
 
+#### 个人网站
+[github page](https://noobplusplus.github.io/)
+[gitee page](https://yuque.gitee.io/noob/)
+
 主要技术：
 
 + QML
