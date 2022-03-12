@@ -4,6 +4,8 @@ import QtQuick.Layouts 1.15
 import "./GeneralViewHttpRequest.js" as GeneralViewHttpRequest
 
 Item {
+    width:parent.width
+    height: parent.height
     property ListModel infoRepeaterModel: ListModel
     {
         ListElement { titleString: qsTr("境外输入"); labelColor: "#FFA352"; total: 0; increase: 0;}
@@ -18,6 +20,8 @@ Item {
         columns: 3 
         columnSpacing :20;
         rowSpacing :20;
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
 
         Repeater
         {
